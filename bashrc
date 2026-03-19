@@ -96,10 +96,12 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -116,5 +118,30 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(starship init bash)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/vinay/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# kubectl
+alias k='kubectl'
+alias kgp='kubectl get pods'
+
+source /etc/bash_completion
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
+
+# Enable Vi Mode for bash shell
+set -o vi
+
+# Set default editor to vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# Starship prompt
+eval "$(starship init bash)"
