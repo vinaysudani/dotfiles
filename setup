@@ -8,6 +8,7 @@ BACKUP_DIR="$HOME/dotfiles_backup/$(date +%Y%m%d_%H%M%S)"
 echo "Creating backup directory at $BACKUP_DIR"
 mkdir -p "$BACKUP_DIR"
 mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.config/alacritty"
 
 backup_and_link() {
     local src="$DOTFILES_DIR/$1"
@@ -31,6 +32,7 @@ backup_and_link "tmux.conf" ".tmux.conf"
 
 # Special case for .config
 backup_and_link "starship.toml" ".config/starship.toml"
+backup_and_link "alacritty.toml" ".config/alacritty/alacritty.toml"
 
 echo "Dotfiles linked successfully!"
 echo "Backup stored in: $BACKUP_DIR"
