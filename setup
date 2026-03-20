@@ -27,6 +27,7 @@ backup_and_link() {
 backup_and_link "bashrc" ".bashrc"
 backup_and_link "vimrc" ".vimrc"
 backup_and_link "inputrc" ".inputrc"
+backup_and_link "tmux.conf" ".tmux.conf"
 
 # Special case for .config
 backup_and_link "starship.toml" ".config/starship.toml"
