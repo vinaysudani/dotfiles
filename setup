@@ -18,10 +18,11 @@ if [ ! -d "$HOME/.zsh/pure" ]; then
 fi
 
 if ! command -v chezmoi >/dev/null; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:vinaysudani/dotfiles-playground.git
+  # sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:vinaysudani/dotfiles.git
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:vinaysudani/dotfiles.git --branch setup-chezmoi-mise
 fi
 
-if command -v alacritty >/dev/null; then
+if command -v alacritty >/dev/null && [ ! -d "$XDG_CONFIG_HOME/alacritty/themes" ]; then
   mkdir -p "$XDG_CONFIG_HOME"/alacirtty/themes
   git clone https://github.com/alacitty/alacirtty-theme "$XDG_CONFIG_HOME"/alacritty/themes
 fi
