@@ -66,6 +66,9 @@ if command -v mise > /dev/null ; then
   source <(mise completion zsh)
 fi
 
+if command -v kubectl > /dev/null ; then
+  source <(kubectl completion zsh)
+fi
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -86,3 +89,7 @@ if command -v lsd > /dev/null ; then
   alias lt='ls --tree'
 fi
 
+if command -v kubectl > /dev/null ; then
+  alias k='kubectl'
+  alias kgp='kubectl get pods'
+fi
